@@ -1,47 +1,110 @@
 package mirea.ru;
 
-public class Main {
+import java.util.*;
+import java.lang.*;
+import java.io.*;
 
-    public static void main(String[] args)
-    {
-        // TASK 1
-forArray();
-whileArray();
-dowhileArray();
-    }
-    //TASK1
-    public static void forArray()
-    {
-        int forArray[] = {1,2,3,4,5};
-        int s = 0;
-        for (int i = 0; i< forArray.length; ++i)
-        {
-            s = s + forArray[i];
+public class Main {
+    public static void main(String[] args) {
+        Scanner sw = new Scanner(System.in);
+        System.out.println("Выберите задание лабораторной работы: \n1- Сумма массива через цикл for. \n2- Сумма массива через цикл while. \n3- Сумма массива через цикл do while. \n4- Аргумент командной строки в цикле for. \n5- Первые 10 чисед гармонического ряда.\n6- Генерация и сортировка случайного массива. \n7- Метод вычисляющий факториал.");
+        menu:
+        while (true) {
+            switch (sw.nextInt()) {
+                case 1:
+                    System.out.println("Вывести на экран сумму чисел массива с помощью циклов for");
+                    int summ = 0;
+                    Random m = new Random();
+                    int mas[] = new int[10];
+                    System.out.println("Случайный массив=");
+                    for (int i = 0; i < 10; i++) {
+                        mas[i] = m.nextInt(50);
+                        summ = summ + mas[i];
+                        System.out.println(mas[i]);
+                    }
+                    System.out.println("Сумма чисел массива=" + summ);
+                    break menu;
+                case 2:
+                    System.out.println("Вывести на экран сумму чисел массива с помощью циклов while");
+                    int Sum = 0;
+                    Scanner s = new Scanner(System.in);
+                    int[] a = new int[10];
+                    int i = 0;
+                    System.out.println("Введите элементы массива");
+                    while (i < 10) {
+                        a[i] = s.nextInt();
+                        Sum = Sum + a[i];
+                        i++;
+                    }
+                    System.out.println("Сумма =" + Sum);
+                    break menu;
+                case 3:
+                    System.out.println("Вывести на экран сумму чисел массива с помощью циклов do while");
+                    int summa = 0;
+                    int q = 0;
+                    Random mm = new Random(100);
+                    int mass[] = new int[10];
+                    System.out.println("Случайные элементы массива=");
+                    do {
+                        mass[q] = mm.nextInt(100);
+                        System.out.println(mass[q]);
+                        summa = summa + mass[q];
+                        q++;
+                    } while (q < 10);
+                    System.out.println("Сумма элементов массива =" + summa);
+                    break menu;
+                case 4:
+                    Scanner ch = new Scanner(System.in);
+                    for (int ii = 0; ii < args.length; ii++) {
+                        System.out.println("Аргумент командной строки[" + ii + "]=" + args[ii]);
+                    }
+                    break menu;
+                case 5:
+                    float b = 1;
+                    float aa = 1;
+                    float c;
+                    System.out.println("Первые 10 цифр гармонического ряда =");
+                    while (b < 10) {
+                        c = aa / b;
+                        b++;
+                        System.out.println(c + "+");
+                    }
+                    break menu;
+                case 6:
+                    System.out.println("Сгенерировать массив целых чисел случайным образом ,вывести его на экран,отсортировать его,и снова вывести на экран.");
+                    System.out.println("Введите количество элементов массива");
+                    Scanner ss = new Scanner(System.in);
+                    int n = ss.nextInt();
+                    Random mmm = new Random();
+                    int mmas[] = new int[n];
+                    System.out.println("Случайный массив=");
+                    for (int iii = 0; iii < n; iii++) {
+                        mmas[iii] = mmm.nextInt(101);
+                        System.out.println(mmas[iii]);
+                    }
+                    Arrays.sort(mmas);
+                    System.out.println("Отсортированный массив =" + Arrays.toString(mmas));
+                    break menu;
+                case 7:
+                    Scanner ssss = new Scanner(System.in);
+                    System.out.println("Введите число для рассчета факториала");
+                    long f = 1;
+                    int p = 1;
+                    int o = ssss.nextInt();
+                    if (o != 0 && o > 0) {
+                        while (p <= o) {
+                            f = f * p;
+                            p++;
+                        }
+                        System.out.println("Факториал=" + f);
+                    } else {
+                        f = 1;
+                        System.out.println("Факториал =" + f);
+                    }
+                    break menu;
+                default:
+                    System.out.println("Не правильное число");
+            }
         }
-        System.out.println(s);
     }
-    public static void whileArray()
-    {
-        int whileArray[] = {10,2,3,4,5};
-        int s = 0, i = 0;
-        while (i < whileArray.length)
-        {
-            s = s + whileArray[i];
-            i++;
-        }
-        System.out.println(s);
-    }
-    public static void dowhileArray()
-    {
-        int dowhileArray[] = {20,2,3,4,5};
-        int s = 0, i = 0;
-        do
-        {
-            s = s + dowhileArray[i];
-            i++;
-        }
-        while (i < dowhileArray.length);
-        System.out.println(s);
-    }
-    
 }
